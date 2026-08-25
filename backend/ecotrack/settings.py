@@ -31,15 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+
     "rest_framework",
+    "corsheaders",
     "core",
-    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'ecotrack.urls'
@@ -128,3 +130,7 @@ SPECTACULAR_SETTINGS = {
     "Description": "API for tracking plants, observations, and envrionmental data.",
     "VERSION": "1.0.0",
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
