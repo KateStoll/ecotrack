@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import PlantForm from './components/PlantForm'
 
 function App() {
   const [plants, setPlants] = useState([])
+ 
 
   useEffect(() => {
     console.log('Fetching plants...')
@@ -20,10 +22,16 @@ function App() {
       })
   }, [])
 
+  const handlePlantCreated = (newPlant) => {
+    setPlants((currentPlants) => [...currentPlants, newPlant])
+  }
+
   return (
     <main>
       <h1>EcoTrack</h1>
 
+      <PlantForm onPlantCreated={handlePlantCreated} />
+     
       <h2>Plants</h2>
 
       {plants.map((plant) => (
