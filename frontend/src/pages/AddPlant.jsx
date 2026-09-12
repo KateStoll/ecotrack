@@ -1,6 +1,6 @@
 import PlantForm from "../components/PlantForm";
 
-function AddPlant() {
+function AddPlant({ onPlantCreated }) {
     return (
         <main>
             <h1>Add A Plant</h1>

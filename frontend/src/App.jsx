@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import PlantForm from './components/PlantForm'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import PlantList from './pages/PlantList'
+import AddPlant from './pages/AddPlant'
 
 function App() {
   const [plants, setPlants] = useState([])
@@ -27,23 +29,19 @@ function App() {
   }
 
   return (
-    <main>
-      <h1>EcoTrack</h1>
-
-      <PlantForm onPlantCreated={handlePlantCreated} />
-     
-      <h2>Plants</h2>
-
-      {plants.map((plant) => (
-        <article key={plant.id}>
-          <h3>{plant.name}</h3>
-          <p>{plant.species}</p>
-          <p>{plant.location}</p>
-          <p>{plant.sunlight}</p>
-          <p>{plant.notes}</p>
-        </article>
-      ))}
-    </main>
+    <BrowserRouter>
+    <Routes>
+      <Route
+        path="/"
+        element={<PlantList plants={plants} />}
+        />
+      <Route
+        path="/add-plant"
+        element={<AddPlant onPlantCreated={handlePlantCreated} />}
+      />
+    
+    </Routes>
+   </BrowserRouter> 
   )
 }
 
