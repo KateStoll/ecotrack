@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
 import PlantList from './pages/PlantList'
 import AddPlant from './pages/AddPlant'
 
@@ -33,8 +34,12 @@ function App() {
     <Routes>
       <Route
         path="/"
+        element={<Home />}
+      />
+      <Route
+        path="/plants"
         element={<PlantList plants={plants} />}
-        />
+      />
       <Route
         path="/add-plant"
         element={<AddPlant onPlantCreated={handlePlantCreated} />}
