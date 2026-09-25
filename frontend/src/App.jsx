@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import PlantList from './pages/PlantList'
 import AddPlant from './pages/AddPlant'
+import EditPlant from './pages/EditPlant'
 
 function App() {
   const [plants, setPlants] = useState([])
@@ -29,6 +30,14 @@ function App() {
     setPlants((currentPlants) => [...currentPlants, newPlant])
   }
 
+  const handlePlantUpdated = (updatedPlant) => {
+    setPlants((currentPlants) =>
+      currentPlants.map((plant) =>
+        plant.id === updatedPlant.id ? updatedPlant : plant
+      )
+    )
+  }
+
   return (
     <BrowserRouter>
     <Routes>
@@ -43,6 +52,11 @@ function App() {
       <Route
         path="/add-plant"
         element={<AddPlant onPlantCreated={handlePlantCreated} />}
+      />
+
+      <Route
+        path="/edit-plant/:id"
+        element={<EditPlant onPlantUpdated={handlePlantUpdated} />}
       />
     
     </Routes>
