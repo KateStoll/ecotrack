@@ -28,6 +28,7 @@ function EditPlant({ onPlantUpdated }) {
         .then((response) => response.json())
         .then((data) => {
             console.log('Updated plant:', data);
+            onPlantUpdated(data);
             navigate(`/plants`);
         })
         .catch((error) => {
