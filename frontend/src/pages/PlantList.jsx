@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function PlantList({ plants }) {
   return (
     <main>
@@ -12,6 +14,9 @@ function PlantList({ plants }) {
           <p>{plant.location}</p>
           <p>{plant.sunlight}</p>
           <p>{plant.notes}</p>
+          <Link to={`/edit-plant/${plant.id}`}>
+            <button> Edit </button>
+          </Link>
         </article>
       ))}
     </main>
